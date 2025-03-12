@@ -55,9 +55,7 @@ const movies: Movie[] = [
 function hasKey(obj: object, key: string): boolean {
   // write your code here...
 
-
-  
-  return true; // replace true with what you see is fit
+  return obj.hasOwnProperty(key); // replace true with what you see is fit
 }
 
 /**
@@ -120,15 +118,10 @@ function updateMovieGenre(
   newGenre: string
 ): Movie[] {
   // write your code here...
-  if(newGenre === undefined){
-    return movies
-  }
-  else{
-    
-    movies.find((movie) => movie.title === title)?.genre = newGenre
-    
-  }
-  return movies; // replace empty array with what you see is fit
+  movies.forEach((movie) =>
+    movie.title === title ? (movie.genre = newGenre) : movie
+  );
+  return movies;
 }
 
 export { Movie, hasKey, printMovieTitles, countMoviesByYear, updateMovieGenre };
